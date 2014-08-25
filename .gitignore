@@ -5,3 +5,5 @@ Coffin.egg-info
 /dist
 .*.swp
 /docs/_build
+*.egg
+.env
