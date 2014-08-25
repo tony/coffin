@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 import os
+import sys
 from setuptools import setup, find_packages
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__),))
 
 setup(name='Coffin',
     version=".".join(map(str, __import__("coffin").__version__)),
@@ -11,7 +14,6 @@ setup(name='Coffin',
     maintainer_email='dcramer@gmail.com',
     url='http://github.com/coffin/coffin',
     packages=find_packages(),
-    #install_requires=['Jinja2', 'django>=1.2'],
     classifiers=[
         "Framework :: Django",
         "Intended Audience :: Developers",
@@ -19,4 +21,6 @@ setup(name='Coffin',
         "Operating System :: OS Independent",
         "Topic :: Software Development"
     ],
+    tests_require=['nose>=1.0', 'django_nose', 'django', 'Jinja2'],
+    test_suite='runtests'
 )

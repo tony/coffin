@@ -3,8 +3,7 @@
 General notes:
 
   - The Django ``stringfilter`` decorator is supported, but should not be
-    used when writing filters specifically for Jinja: It will lose the
-    attributes attached to the filter function by Jinja's
+    used when writing filters specifically for Jinja: It will lose the attributes attached to the filter function by Jinja's
     ``environmentfilter`` and ``contextfilter`` decorators, when used
     in the wrong order.
 

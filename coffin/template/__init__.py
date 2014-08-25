@@ -9,10 +9,10 @@ from jinja2 import Template as _Jinja2Template
 from django.template import __all__
 from django.template import *
 from django.template import Origin
-from django.test import signals
 
 # Override default library class with ours
 from library import *
+
 
 class Template(_Jinja2Template):
     '''Fixes the incompabilites between Jinja2's template class and
@@ -51,7 +51,8 @@ class Template(_Jinja2Template):
             context = dict_from_django_context(context)
         assert isinstance(context, dict)  # Required for **-operator.
         # It'd be nice to move this only into the test env
-        signals.template_rendered.send(sender=self, template=self, context=Context(context))
+        from django.test.signals import template_rendered
+        template_rendered.send(sender=self, template=self, context=Context(context))
         return super(Template, self).render(**context)
 
     @property
